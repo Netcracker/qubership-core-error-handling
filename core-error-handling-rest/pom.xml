@@ -17,7 +17,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <mockito.version>5.14.2</mockito.version>
         <lombok.version>1.18.22</lombok.version>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../core-error-handling-rest/target/jacoco-ut/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
