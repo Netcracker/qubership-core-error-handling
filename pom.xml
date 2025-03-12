@@ -7,6 +7,13 @@
     <packaging>pom</packaging>
     <version>3.0.0-SNAPSHOT</version>
 
+    <properties>
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ../core-error-handling-rest/target/jacoco-ut/jacoco.xml,
+            ../core-error-handling-runtime/target/jacoco-ut/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+    </properties>
+
     <modules>
         <module>core-error-handling-runtime</module>
         <module>core-error-handling-rest</module>
