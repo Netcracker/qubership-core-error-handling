@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @CustomLog
@@ -48,7 +47,7 @@ class TmfErrorCodeResponseTest {
                 ErrorCodes.DBAAS_VALIDATION_4002,
                 "detailed message", Source.builder().pointer("/attr2").build());
         MultiCauseException dbaasAgentErr = new MultiCauseException(
-                Stream.of(validationErr1, validationErr2).collect(Collectors.toList()));
+                Stream.of(validationErr1, validationErr2).toList());
         // imitate exception was serialized into REST response and
         // deserialized on the client side into RemoteCodeException
         TmfErrorResponse response = TmfErrorResponse.builder(dbaasAgentErr)
@@ -58,7 +57,7 @@ class TmfErrorCodeResponseTest {
                                 .referenceError("https://errors-portal.com/error/" +
                                         cause.getErrorCode().getCode())
                                 .build()
-                        ).collect(Collectors.toList())
+                        ).toList()
                 ).build();
         TmfErrorResponseConverter errorResponseConverter = new DefaultTmfErrorResponseConverter();
         RemoteCodeException remoteErrorCodeException = errorResponseConverter.buildErrorCodeException(response);

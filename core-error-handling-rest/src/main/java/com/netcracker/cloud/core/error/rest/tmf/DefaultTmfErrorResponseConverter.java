@@ -9,7 +9,6 @@ import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class DefaultTmfErrorResponseConverter implements TmfErrorResponseConverter {
 
@@ -19,7 +18,7 @@ public class DefaultTmfErrorResponseConverter implements TmfErrorResponseConvert
         RemoteCodeException errorCodeException;
         if (errors != null && !errors.isEmpty()) {
             List<RemoteCodeException> causes =
-                    response.getErrors().stream().map(this::buildException).collect(Collectors.toList());
+                    response.getErrors().stream().map(this::buildException).toList();
             errorCodeException = new RemoteMultiCauseException(errorCode, response.getDetail(), causes);
         } else {
             errorCodeException = new RemoteCodeException(errorCode, response.getDetail());
