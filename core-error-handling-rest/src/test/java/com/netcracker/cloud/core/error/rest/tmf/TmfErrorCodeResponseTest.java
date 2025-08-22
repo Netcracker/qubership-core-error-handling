@@ -23,24 +23,24 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @CustomLog
-public class TmfErrorCodeResponseTest {
+class TmfErrorCodeResponseTest {
     private ByteArrayOutputStream outContent;
     private final PrintStream originalOut = System.out;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
-    public void setUpStreams() {
+    void setUpStreams() {
         outContent = new ByteArrayOutputStream();
         System.setOut((new PrintStream(new DoubleOutputStream(outContent, originalOut))));
     }
 
     @AfterEach
-    public void restoreStreams() {
+    void restoreStreams() {
         System.setOut(originalOut);
     }
 
     @Test
-    public void testErrorCodeResponseSerialization() throws Exception {
+    void testErrorCodeResponseSerialization() throws Exception {
         DbaasAggregatorValidationException validationErr1 = new DbaasAggregatorValidationException(
                 ErrorCodes.DBAAS_VALIDATION_4001,
                 "detailed message", Source.builder().pointer("/attr1").build());
