@@ -19,3 +19,4 @@ Maven artifact to provide functionality which addresses rest layer
 
 Read more [here](core-error-handling-rest/README.md)
 
+
